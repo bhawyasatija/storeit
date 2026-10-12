@@ -84,4 +84,11 @@ export const sortTypes = [
 export const avatarPlaceholderUrl =
   "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg";
 
-export const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+export const MAX_FILE_SIZE = 50_000_000; // 50 MB per file (the Appwrite Cloud free-plan bucket limit)
+export const MAX_FILE_SIZE_LABEL = "50MB";
+
+// Storage quota shown on the dashboard. This is a display quota for the UI,
+// not a limit enforced by Appwrite.
+export const STORAGE_LIMIT = 2 * 1024 * 1024 * 1024; // 2GB
+
+export const MAX_SHARE_RECIPIENTS = 20;

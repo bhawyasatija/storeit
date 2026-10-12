@@ -13,12 +13,6 @@ declare interface SearchParamProps {
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-declare interface UploadFileProps {
-  file: File;
-  ownerId: string;
-  accountId: string;
-  path: string;
-}
 declare interface GetFilesProps {
   types: FileType[];
   searchText?: string;
@@ -27,30 +21,22 @@ declare interface GetFilesProps {
 }
 declare interface RenameFileProps {
   fileId: string;
+  /** New name without the extension. */
   name: string;
-  extension: string;
-  path: string;
 }
 declare interface UpdateFileUsersProps {
   fileId: string;
   emails: string[];
-  path: string;
 }
 declare interface DeleteFileProps {
   fileId: string;
-  bucketFileId: string;
-  path: string;
 }
 
 declare interface FileUploaderProps {
-  ownerId: string;
-  accountId: string;
   className?: string;
 }
 
 declare interface MobileNavigationProps {
-  ownerId: string;
-  accountId: string;
   fullName: string;
   avatar: string;
   email: string;
@@ -69,8 +55,3 @@ declare interface ThumbnailProps {
   imageClassName?: string;
 }
 
-declare interface ShareInputProps {
-  file: Models.Document;
-  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onRemove: (email: string) => void;
-}

@@ -19,23 +19,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { createAccount, signInUser } from "@/lib/actions/user.actions";
 import OtpModal from "@/components/OTPModal";
+import { emailSchema, fullNameSchema } from "@/lib/validation";
 
 type FormType = "sign-in" | "sign-up";
 
 const authFormSchema = (formType: FormType) => {
   return z.object({
-    email: z.string().email(),
-    fullName:
-      formType === "sign-up"
-        ? z.string().min(2).max(50)
-        : z.string().optional(),
+    email: emailSchema,
+    fullName: formType === "sign-up" ? fullNameSchema : z.string().optional(),
   });
 };
 
 const AuthForm = ({ type }: { type: FormType }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const [accountId, setAccountId] = useState(null);
+  const [accountId, setAccountId] = useState<string | null>(null);
 
   const formSchema = authFormSchema(type);
   const form = useForm<z.infer<typeof formSchema>>({
@@ -49,9 +47,10 @@ const AuthForm = ({ type }: { type: FormType }) => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     setErrorMessage("");
+    setAccountId(null);
 
     try {
-      const user =
+      const result =
         type === "sign-up"
           ? await createAccount({
               fullName: values.fullName || "",
@@ -59,9 +58,14 @@ const AuthForm = ({ type }: { type: FormType }) => {
             })
           : await signInUser({ email: values.email });
 
-      setAccountId(user.accountId);
+      if (result.accountId) setAccountId(result.accountId);
+      else setErrorMessage(result.error ?? "Something went wrong.");
     } catch {
-      setErrorMessage("Failed to create account. Please try again.");
+      setErrorMessage(
+        type === "sign-up"
+          ? "Failed to create account. Please try again."
+          : "Failed to sign in. Please try again.",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -85,6 +89,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
 
                     <FormControl>
                       <Input
+                        autoComplete="name"
                         placeholder="Enter your full name"
                         className="shad-input"
                         {...field}
@@ -108,6 +113,8 @@ const AuthForm = ({ type }: { type: FormType }) => {
 
                   <FormControl>
                     <Input
+                      type="email"
+                      autoComplete="email"
                       placeholder="Enter your email"
                       className="shad-input"
                       {...field}
@@ -130,7 +137,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
             {isLoading && (
               <Image
                 src="/assets/icons/loader.svg"
-                alt="loader"
+                alt=""
                 width={24}
                 height={24}
                 className="ml-2 animate-spin"
@@ -138,7 +145,11 @@ const AuthForm = ({ type }: { type: FormType }) => {
             )}
           </Button>
 
-          {errorMessage && <p className="error-message">*{errorMessage}</p>}
+          {errorMessage && (
+            <p className="error-message" role="alert">
+              {errorMessage}
+            </p>
+          )}
 
           <div className="body-2 flex justify-center">
             <p className="text-light-100">
@@ -158,7 +169,11 @@ const AuthForm = ({ type }: { type: FormType }) => {
       </Form>
 
       {accountId && (
-        <OtpModal email={form.getValues("email")} accountId={accountId} />
+        <OtpModal
+          email={form.getValues("email")}
+          accountId={accountId}
+          onClose={() => setAccountId(null)}
+        />
       )}
     </>
   );

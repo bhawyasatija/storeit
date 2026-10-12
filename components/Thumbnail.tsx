@@ -17,15 +17,19 @@ export const Thumbnail = ({
   imageClassName,
   className,
 }: Props) => {
-  const isImage = type === "image" && extension !== "svg";
+  const isImage = type === "image" && extension !== "svg" && !!url;
+  const src = isImage ? url : getFileIcon(extension, type);
 
   return (
     <figure className={cn("thumbnail", className)}>
       <Image
-        src={isImage ? url : getFileIcon(extension, type)}
-        alt="thumbnail"
+        src={src}
+        alt=""
         width={100}
         height={100}
+        // Previews come from the authenticated file route or a local blob:
+        // URL, which the image optimizer cannot fetch on the user's behalf.
+        unoptimized={isImage}
         className={cn(
           "size-8 object-contain",
           imageClassName,

@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/card";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import { calculatePercentage, convertFileSize } from "@/lib/utils";
+import { STORAGE_LIMIT } from "@/constants";
 
 const chartConfig = {
   size: {
@@ -92,7 +93,8 @@ export const Chart = ({ used = 0 }: { used: number }) => {
       <CardHeader className="chart-details">
         <CardTitle className="chart-title">Available Storage</CardTitle>
         <CardDescription className="chart-description">
-        {used ? convertFileSize(2 * 1024 * 1024 * 1024 - used) : "2GB"} / 2GB
+          {convertFileSize(Math.max(STORAGE_LIMIT - used, 0))} free of{" "}
+          {convertFileSize(STORAGE_LIMIT, 0)}
         </CardDescription>
       </CardHeader>
     </Card>

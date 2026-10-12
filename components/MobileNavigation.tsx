@@ -9,7 +9,7 @@ import {
 import Image from "next/image";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
-import { Separator } from "@radix-ui/react-separator";
+import { Separator } from "@/components/ui/separator";
 import { navItems } from "@/constants";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -17,21 +17,7 @@ import { Button } from "@/components/ui/button";
 import FileUploader from "@/components/FileUploader";
 import { signOutUser } from "@/lib/actions/user.actions";
 
-interface Props {
-  $id: string;
-  accountId: string;
-  fullName: string;
-  avatar: string;
-  email: string;
-}
-
-const MobileNavigation = ({
-  $id: ownerId,
-  accountId,
-  fullName,
-  avatar,
-  email,
-}: Props) => {
+const MobileNavigation = ({ fullName, avatar, email }: MobileNavigationProps) => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -46,10 +32,10 @@ const MobileNavigation = ({
       />
 
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger>
+        <SheetTrigger aria-label="Open menu">
           <Image
             src="/assets/icons/menu.svg"
-            alt="Search"
+            alt=""
             width={30}
             height={30}
           />
@@ -75,7 +61,12 @@ const MobileNavigation = ({
           <nav className="mobile-nav">
             <ul className="mobile-nav-list">
               {navItems.map(({ url, name, icon }) => (
-                <Link key={name} href={url} className="lg:w-full">
+                <Link
+                  key={name}
+                  href={url}
+                  className="lg:w-full"
+                  onClick={() => setOpen(false)}
+                >
                   <li
                     className={cn(
                       "mobile-nav-item",
@@ -102,15 +93,15 @@ const MobileNavigation = ({
           <Separator className="my-5 bg-light-200/20" />
 
           <div className="flex flex-col justify-between gap-5 pb-5">
-            <FileUploader ownerId={ownerId} accountId={accountId} />
+            <FileUploader />
             <Button
-              type="submit"
+              type="button"
               className="mobile-sign-out-button"
               onClick={async () => await signOutUser()}
             >
               <Image
                 src="/assets/icons/logout.svg"
-                alt="logo"
+                alt=""
                 width={24}
                 height={24}
               />

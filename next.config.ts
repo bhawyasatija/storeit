@@ -1,36 +1,43 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // Pin the project root (a stray lockfile in a parent folder otherwise
+  // makes Next.js guess the wrong workspace root).
+  outputFileTracingRoot: __dirname,
+  turbopack: { root: __dirname },
+  // Type and lint errors fail the build (they were previously ignored).
   experimental: {
     serverActions: {
-      bodySizeLimit: "100MB",
+      // Uploads go through /api/files, so server actions only carry small
+      // JSON payloads (rename, share, delete, search).
+      bodySizeLimit: "1mb",
     },
   },
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "cdn.pixabay.com",
-      },
-      {
+        // Default avatar for new users (constants/index.ts)
         protocol: "https",
         hostname: "img.freepik.com",
       },
-      {
-        protocol: "https",
-        hostname: "cloud.appwrite.io",
-      },
-      {
-        protocol: "https",
-        hostname: "assets.promptbase.com",
-      },
     ],
+  },
+  poweredByHeader: false,
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+        ],
+      },
+    ];
   },
 };
 

@@ -1,1078 +1,221 @@
-<<<<<<< HEAD
-<div align="center">
-  <br />
-    <a href="https://youtu.be/lie0cr3wESQ" target="_blank">
-      <img src="https://i.ibb.co/wR9G2k3/Readme-Thumbnail.png" alt="Project Banner">
-    </a>
-  <br />
-
-  <div>
-     <img src="https://img.shields.io/badge/-Next_JS-black?style=for-the-badge&logoColor=white&logo=nextdotjs&color=000000" alt="nextdotjs" />
-    <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="typescript" />
-    <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="tailwindcss" />
-    <img src="https://img.shields.io/badge/-Appwrite-black?style=for-the-badge&logoColor=white&logo=appwrite&color=FD366E" alt="appwrite" />
-  </div>
-
-<h3 align="center">Storage and File Sharing Platform</h3>
-
-   <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
-    </div>
-</div>
-
-## 📋 <a name="table">Table of Contents</a>
-
-1. 🤖 [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Features](#features)
-4. 🤸 [Quick Start](#quick-start)
-5. 🕸️ [Snippets (Code to Copy)](#snippets)
-6. 🔗 [Assets](#links)
-7. 🚀 [More](#more)
-
-## 🚨 Tutorial
-
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube
-channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>.
-
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects
-like these step-by-step in a beginner-friendly manner!
-
-<a href="https://youtu.be/lie0cr3wESQ?si=yLQyhMrYLjpysnqE" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
-
-## <a name="introduction">🤖 Introduction</a>
-
-A storage management and file sharing platform that lets users effortlessly upload, organize, and share files. Built with the latest Next.js 15 and the Appwrite Node SDK, utilizing advanced features for seamless file management.
-
-If you're getting started and need assistance or face any bugs, join our active Discord community with over **34k+**
-members. It's a place where people help each other out.
-
-<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
-
-## <a name="tech-stack">⚙️ Tech Stack</a>
-
-- React 19
-- Next.js 15
-- Appwrite
-- TailwindCSS
-- ShadCN
-- TypeScript
-
-## <a name="features">🔋 Features</a>
-
-👉 **User Authentication with Appwrite**: Implement signup, login, and logout functionality using Appwrite's authentication system.
-
-👉 **FIle Uploads**: Effortlessly upload a variety of file types, including documents, images, videos, and audio, ensuring all your important data.
-
-👉 **View and Manage Files**: Users can browse through their uploaded files stored in Appwrite storage, view on a new tab, rename file or delete.
-
-👉 **Download Files**: Users can download their uploaded files giving them instant access to essential documents.
-
-👉 **File Sharing**: Users can easily share their uploaded files with others, enabling collaboration and easy access to important content.
-
-👉 **Dashboard**: Gain insights at a glance with a dynamic dashboard that showcases total and consumed storage, recent uploads, and a summary of files grouped by type.
-
-👉 **Global Search**: Users can quickly find files and shared content across the platform with a robust global search feature.
-
-👉 **Sorting Options**: Organize files efficiently by sorting them by date, name, or size, making file management a breeze.
-
-👉 **Modern Responsive Design**: A fresh and minimalist UI that emphasizes usability, ensuring a clean aesthetic across all devices.
-
-and many more, including the latest **React 19**, **Next.js 15** and **Appwrite** features alongside code architecture and
-reusability
-
-## <a name="quick-start">🤸 Quick Start</a>
-
-Follow these steps to set up the project locally on your machine.
-
-**Prerequisites**
-
-Make sure you have the following installed on your machine:
-
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
-
-**Cloning the Repository**
-
-```bash
-git clone https://github.com/JavaScript-Mastery-Pro/storage_management_solution.git
-cd storage_management_solution
-```
-
-**Installation**
-
-Install the project dependencies using npm:
-
-```bash
-npm install
-```
-
-**Set Up Environment Variables**
-
-Create a new file named `.env.local` in the root of your project and add the following content:
-
-```env
-NEXT_PUBLIC_APPWRITE_ENDPOINT="https://cloud.appwrite.io/v1"
-NEXT_PUBLIC_APPWRITE_PROJECT=""
-NEXT_PUBLIC_APPWRITE_DATABASE=""
-NEXT_PUBLIC_APPWRITE_USERS_COLLECTION=""
-NEXT_PUBLIC_APPWRITE_FILES_COLLECTION=""
-NEXT_PUBLIC_APPWRITE_BUCKET=""
-NEXT_APPWRITE_KEY=""
-```
-
-Replace the values with your actual Appwrite credentials. You can obtain these credentials by signing up &
-creating a new project on the [Appwrite website](https://appwrite.io/).
-
-**Running the Project**
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
-
-## <a name="snippets">🕸️ Snippets</a>
-
-<details>
-<summary><code>tailwind.config.ts</code></summary>
-
-```typescript
-import type { Config } from 'tailwindcss';
-
-const config: Config = {
-  darkMode: ['class'],
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-  theme: {
-    extend: {
-      colors: {
-        brand: {
-          DEFAULT: '#FA7275',
-          100: '#EA6365',
-        },
-        red: '#FF7474',
-        error: '#b80000',
-        green: '#3DD9B3',
-        blue: '#56B8FF',
-        pink: '#EEA8FD',
-        orange: '#F9AB72',
-        light: {
-          100: '#333F4E',
-          200: '#A3B2C7',
-          300: '#F2F5F9',
-          400: '#F2F4F8',
-        },
-        dark: {
-          100: '#04050C',
-          200: '#131524',
-        },
-      },
-      fontFamily: {
-        poppins: ['var(--font-poppins)'],
-      },
-      boxShadow: {
-        'drop-1': '0px 10px 30px 0px rgba(66, 71, 97, 0.1)',
-        'drop-2': '0 8px 30px 0 rgba(65, 89, 214, 0.3)',
-        'drop-3': '0 8px 30px 0 rgba(65, 89, 214, 0.1)',
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-      },
-      keyframes: {
-        'caret-blink': {
-          '0%,70%,100%': { opacity: '1' },
-          '20%,50%': { opacity: '0' },
-        },
-      },
-      animation: {
-        'caret-blink': 'caret-blink 1.25s ease-out infinite',
-      },
-    },
-  },
-  plugins: [require('tailwindcss-animate')],
-};
-export default config;
-```
-
-</details>
-
-<details>
-<summary><code>globals.css</code></summary>
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  * {
-    @apply scroll-smooth;
-  }
-
-  body {
-    @apply bg-white text-dark-200 min-h-screen;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-    height: 3px;
-    border-radius: 50px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #e5e7eb;
-    border-radius: 50px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #fa7275;
-  }
-
-  /* Remove scrollbar */
-  .remove-scrollbar::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
-    border-radius: 0px;
-  }
-
-  .remove-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  .remove-scrollbar::-webkit-scrollbar-thumb {
-    background: transparent;
-    border-radius: 0px;
-  }
-
-  .remove-scrollbar::-webkit-scrollbar-thumb:hover {
-    /* background: #1e2238; */
-    background: transparent;
-  }
-
-  .recharts-responsive-container {
-    height: initial !important;
-  }
-}
-
-@layer utilities {
-  /* ===== TYPOGRAPHY */
-  .h1 {
-    @apply text-[34px] leading-[42px] font-bold;
-  }
-  .h2 {
-    @apply text-[24px] leading-[36px] font-bold;
-  }
-  .h3 {
-    @apply text-[20px] leading-[28px] font-semibold;
-  }
-  .h4 {
-    @apply text-[18px] leading-[20px] font-medium;
-  }
-  .h5 {
-    @apply text-[16px] leading-[24px] font-semibold;
-  }
-  .subtitle-1 {
-    @apply text-[16px] leading-[24px] font-medium;
-  }
-  .subtitle-2 {
-    @apply text-[14px] leading-[20px] font-semibold;
-  }
-  .body-1 {
-    @apply text-[16px] leading-[24px] font-normal;
-  }
-  .body-2 {
-    @apply text-[14px] leading-[20px] font-normal;
-  }
-  .button {
-    @apply text-[14px] leading-[20px] font-medium;
-  }
-  .caption {
-    @apply text-[12px] leading-[16px] font-normal;
-  }
-  .overline {
-    @apply text-[10px] leading-[14px] font-normal;
-  }
-
-  /* ===== HELPER CLASSES */
-  .container {
-    @apply mx-auto max-w-7xl px-5;
-  }
-  .primary-btn {
-    @apply bg-brand hover:bg-brand-100 transition-all rounded-full button !important;
-  }
-  .flex-center {
-    @apply flex items-center justify-center;
-  }
-
-  /* =====  SHADCN OVERRIDES */
-  .shad-no-focus {
-    @apply outline-none ring-offset-transparent focus:ring-transparent focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
-  }
-  .shad-input {
-    @apply border-none shadow-none p-0 shad-no-focus placeholder:text-light-200 body-2 !important;
-  }
-
-  .shad-form-item {
-    @apply flex h-[78px] flex-col justify-center rounded-xl border border-light-300 px-4 shadow-drop-1;
-  }
-  .shad-form-label {
-    @apply text-light-100 pt-2 body-2 w-full !important;
-  }
-  .shad-form-message {
-    @apply text-red body-2 ml-4 !important;
-  }
-  .shad-alert-dialog {
-    @apply space-y-4 max-w-[95%] sm:w-fit rounded-xl md:rounded-[30px] px-4 md:px-8 py-10 bg-white outline-none !important;
-  }
-  .shad-submit-btn {
-    @apply bg-brand button hover:bg-brand-100 transition-all rounded-full !important;
-  }
-  .shad-otp {
-    @apply w-full flex gap-1 sm:gap-2 justify-between !important;
-  }
-  .shad-otp-slot {
-    @apply text-[40px] font-medium rounded-xl ring-brand shadow-drop-1 text-brand-100 justify-center flex border-2 border-light-300 size-12 md:size-16 gap-5 !important;
-  }
-
-  .shad-sheet {
-    @apply pt-0 !important;
-  }
-  .shad-sheet button,
-  .shad-dialog button {
-    @apply focus:ring-0 focus:ring-offset-0 focus-visible:border-none outline-none focus-visible:outline-none focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
-  }
-  .shad-dropdown-item {
-    @apply cursor-pointer !important;
-  }
-  .shad-dialog {
-    @apply rounded-[26px] w-[90%] max-w-[400px] px-6 py-8   !important;
-  }
-  .shad-chart-title {
-    @apply text-white !important;
-  }
-  .shad-select-item {
-    @apply cursor-pointer !important;
-  }
-
-  /* Sidebar & MobileNavigation */
-  .nav-icon {
-    @apply w-6 filter invert opacity-25 !important;
-  }
-  .nav-icon-active {
-    @apply invert-0 opacity-100 !important;
-  }
-
-  /* =====  STYLE CLASSES */
-
-  /* Root Layout */
-  .main-content {
-    @apply remove-scrollbar h-full flex-1 overflow-auto bg-light-400 px-5 py-7 sm:mr-7 sm:rounded-[30px] md:mb-7 md:px-9 md:py-10 !important;
-  }
-
-  /* Dashboard */
-  .dashboard-container {
-    @apply mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 xl:gap-10 !important;
-  }
-  .dashboard-summary-list {
-    @apply mt-6 grid grid-cols-1 gap-4 xl:mt-10 xl:grid-cols-2 xl:gap-9 !important;
-  }
-  .dashboard-summary-card {
-    @apply relative mt-6 rounded-[20px] bg-white p-5 transition-all hover:scale-105 !important;
-  }
-  .summary-type-icon {
-    @apply absolute -left-3 top-[-25px] z-10 w-[190px] object-contain !important;
-  }
-  .summary-type-size {
-    @apply h4 relative z-20 w-full text-right !important;
-  }
-  .summary-type-title {
-    @apply h5 relative z-20 text-center !important;
-  }
-  .dashboard-recent-files {
-    @apply h-full rounded-[20px] xl:h-[654px] custom-scrollbar overflow-auto bg-white p-5 xl:p-7 !important;
-  }
-  .recent-file-details {
-    @apply flex w-full justify-between items-center !important;
-  }
-  .recent-file-name {
-    @apply subtitle-2 line-clamp-1 w-full text-light-100 sm:max-w-[200px] lg:max-w-[250px] !important;
-  }
-  .recent-file-date {
-    @apply body-2 text-light-100/80 !important;
-  }
-  .empty-list {
-    @apply body-1 mt-10 text-center text-light-200 !important;
-  }
-
-  /* Type page */
-  .page-container {
-    @apply mx-auto flex w-full max-w-7xl flex-col items-center gap-8 !important;
-  }
-  .total-size-section {
-    @apply flex mt-2 flex-col justify-between sm:flex-row sm:items-center !important;
-  }
-  .file-list {
-    @apply grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 !important;
-  }
-  .sort-container {
-    @apply mt-5 flex items-center sm:mt-0 sm:gap-3 !important;
-  }
-
-  /* ActionsDropdown */
-  .rename-input-field {
-    @apply body-2 shad-no-focus h-[52px] w-full rounded-full border px-4 shadow-drop-1 !important;
-  }
-  .delete-confirmation {
-    @apply text-center text-light-100 !important;
-  }
-  .delete-file-name {
-    @apply font-medium text-brand-100 !important;
-  }
-  .modal-cancel-button {
-    @apply h-[52px] flex-1 rounded-full bg-white text-light-100 hover:bg-transparent !important;
-  }
-  .modal-submit-button {
-    @apply primary-btn !mx-0 h-[52px] w-full flex-1 !important;
-  }
-
-  /* ActionsModalContent */
-  .file-details-thumbnail {
-    @apply !mb-1 flex items-center gap-3 rounded-xl border border-light-200/40 bg-light-400/50 p-3 !important;
-  }
-  .file-details-label {
-    @apply body-2 w-[30%] text-light-100 !important;
-  }
-  .file-details-value {
-    @apply subtitle-2 flex-1 !important;
-  }
-
-  .share-wrapper {
-    @apply !mt-2 space-y-2 !important;
-  }
-  .share-input-field {
-    @apply body-2 shad-no-focus h-[52px] w-full rounded-full border px-4 shadow-drop-1 !important;
-  }
-  .share-remove-user {
-    @apply rounded-full bg-transparent text-light-100 shadow-none hover:bg-transparent !important;
-  }
-  .remove-icon {
-    @apply aspect-square rounded-full !important;
-  }
-
-  /* AuthForm */
-  .auth-form {
-    @apply flex max-h-[800px] w-full max-w-[580px] flex-col justify-center space-y-6 transition-all lg:h-full lg:space-y-8 !important;
-  }
-  .form-title {
-    @apply h1 text-center text-light-100 md:text-left !important;
-  }
-  .form-submit-button {
-    @apply primary-btn h-[66px] !important;
-  }
-  .error-message {
-    @apply body-2 mx-auto w-fit rounded-xl bg-error/5 px-8 py-4 text-center text-error !important;
-  }
-
-  /* Card */
-  .file-card {
-    @apply flex cursor-pointer flex-col gap-6 rounded-[18px] bg-white p-5 shadow-sm transition-all hover:shadow-drop-3 !important;
-  }
-  .file-card-details {
-    @apply flex flex-col gap-2 text-light-100 !important;
-  }
-
-  /* Chart */
-  .chart {
-    @apply flex items-center rounded-[20px] bg-brand p-2 text-white md:flex-col xl:flex-row !important;
-  }
-  .chart-container {
-    @apply mx-auto aspect-square w-[180px] text-white xl:w-[200px] !important;
-  }
-  .polar-grid {
-    @apply first:fill-white/20 last:fill-brand !important;
-  }
-  .chart-details {
-    @apply flex-1 items-start px-3 py-0 sm:px-5 lg:p-3 xl:pr-5 !important;
-  }
-  .chart-total-percentage {
-    @apply fill-white text-4xl font-bold !important;
-  }
-  .chart-title {
-    @apply h3 font-bold md:text-center lg:text-left !important;
-  }
-  .chart-description {
-    @apply subtitle-1 mt-2 w-full text-white/70 md:text-center lg:text-left !important;
-  }
-
-  /* FileUploader */
-  .uploader-button {
-    @apply primary-btn h-[52px] gap-2 px-10 shadow-drop-1 !important;
-  }
-  .uploader-preview-list {
-    @apply fixed bottom-10 right-10 z-50 flex size-full h-fit max-w-[480px] flex-col gap-3 rounded-[20px] bg-white p-7 shadow-drop-3 !important;
-  }
-  .uploader-preview-item {
-    @apply flex items-center justify-between  gap-3 rounded-xl p-3 shadow-drop-3 !important;
-  }
-  .preview-item-name {
-    @apply subtitle-2 mb-2 line-clamp-1 max-w-[300px] !important;
-  }
-
-  .error-toast {
-    @apply bg-red !rounded-[10px] !important;
-  }
-
-  /* Header */
-  .header {
-    @apply hidden items-center justify-between gap-5 p-5 sm:flex lg:py-7 xl:gap-10 !important;
-  }
-  .header-wrapper {
-    @apply flex-center min-w-fit gap-4 !important;
-  }
-  .sign-out-button {
-    @apply flex-center h-[52px] min-w-[54px] items-center rounded-full bg-brand/10 p-0 text-brand shadow-none transition-all hover:bg-brand/20 !important;
-  }
-
-  /* Mobile Navigation */
-  .mobile-header {
-    @apply flex h-[60px] justify-between px-5 sm:hidden !important;
-  }
-  .header-user {
-    @apply my-3 flex items-center gap-2 rounded-full p-1 text-light-100 sm:justify-center sm:bg-brand/10 lg:justify-start lg:p-3 !important;
-  }
-  .header-user-avatar {
-    @apply aspect-square w-10 rounded-full object-cover !important;
-  }
-  .mobile-nav {
-    @apply h5 flex-1 gap-1 text-brand !important;
-  }
-  .mobile-nav-list {
-    @apply flex flex-1 flex-col gap-4 !important;
-  }
-  .mobile-nav-item {
-    @apply flex text-light-100 gap-4 w-full justify-start items-center h5 px-6 h-[52px] rounded-full !important;
-  }
-  .mobile-sign-out-button {
-    @apply h5 flex h-[52px] w-full items-center gap-4 rounded-full bg-brand/10 px-6 text-brand shadow-none transition-all hover:bg-brand/20 !important;
-  }
-
-  /* OTP Modal */
-  .otp-close-button {
-    @apply absolute -right-1 -top-7 cursor-pointer sm:-right-2 sm:-top-4  !important;
-  }
-
-  /* Search */
-  .search {
-    @apply relative w-full md:max-w-[480px] !important;
-  }
-  .search-input-wrapper {
-    @apply flex h-[52px] flex-1 items-center gap-3 rounded-full px-4 shadow-drop-3 !important;
-  }
-  .search-input {
-    @apply body-2 shad-no-focus  placeholder:body-1 w-full border-none p-0 shadow-none placeholder:text-light-200 !important;
-  }
-  .search-result {
-    @apply absolute left-0 top-16 z-50 flex w-full flex-col gap-3 rounded-[20px] bg-white p-4 !important;
-  }
-  .empty-result {
-    @apply body-2 text-center text-light-100 !important;
-  }
-
-  /* Sidebar */
-  .sidebar {
-    @apply remove-scrollbar hidden h-screen w-[90px] flex-col overflow-auto px-5 py-7 sm:flex lg:w-[280px] xl:w-[325px] !important;
-  }
-  .sidebar-nav {
-    @apply h5 mt-9 flex-1 gap-1 text-brand !important;
-  }
-  .sidebar-nav-item {
-    @apply flex text-light-100 gap-4 rounded-xl lg:w-full justify-center lg:justify-start items-center h5 lg:px-[30px] h-[52px] lg:rounded-full !important;
-  }
-  .sidebar-user-info {
-    @apply mt-4 flex items-center justify-center gap-2 rounded-full bg-brand/10 p-1 text-light-100 lg:justify-start lg:p-3 !important;
-  }
-  .sidebar-user-avatar {
-    @apply aspect-square w-10 rounded-full object-cover !important;
-  }
-
-  .shad-active {
-    @apply bg-brand text-white shadow-drop-2 !important;
-  }
-
-  /* Sort */
-  .sort-select {
-    @apply shad-no-focus h-11 w-full rounded-[8px] border-transparent bg-white !shadow-sm sm:w-[210px] !important;
-  }
-  .sort-select-content {
-    @apply !shadow-drop-3 !important;
-  }
-
-  /* Thumbnail */
-  .thumbnail {
-    @apply flex-center size-[50px] min-w-[50px] overflow-hidden rounded-full bg-brand/10;
-  }
-  .thumbnail-image {
-    @apply size-full object-cover object-center !important;
-  }
-}
-```
-
-</details>
-
-<details>
-<summary><code>constants/index.ts</code></summary>
-
-```typescript
-export const navItems = [
-  {
-    name: 'Dashboard',
-    icon: '/assets/icons/dashboard.svg',
-    url: '/',
-  },
-  {
-    name: 'Documents',
-    icon: '/assets/icons/documents.svg',
-    url: '/documents',
-  },
-  {
-    name: 'Images',
-    icon: '/assets/icons/images.svg',
-    url: '/images',
-  },
-  {
-    name: 'Media',
-    icon: '/assets/icons/video.svg',
-    url: '/media',
-  },
-  {
-    name: 'Others',
-    icon: '/assets/icons/others.svg',
-    url: '/others',
-  },
-];
-
-export const actionsDropdownItems = [
-  {
-    label: 'Rename',
-    icon: '/assets/icons/edit.svg',
-    value: 'rename',
-  },
-  {
-    label: 'Details',
-    icon: '/assets/icons/info.svg',
-    value: 'details',
-  },
-  {
-    label: 'Share',
-    icon: '/assets/icons/share.svg',
-    value: 'share',
-  },
-  {
-    label: 'Download',
-    icon: '/assets/icons/download.svg',
-    value: 'download',
-  },
-  {
-    label: 'Delete',
-    icon: '/assets/icons/delete.svg',
-    value: 'delete',
-  },
-];
-
-export const sortTypes = [
-  {
-    label: 'Date created (newest)',
-    value: '$createdAt-desc',
-  },
-  {
-    label: 'Created Date (oldest)',
-    value: '$createdAt-asc',
-  },
-  {
-    label: 'Name (A-Z)',
-    value: 'name-asc',
-  },
-  {
-    label: 'Name (Z-A)',
-    value: 'name-desc',
-  },
-  {
-    label: 'Size (Highest)',
-    value: 'size-desc',
-  },
-  {
-    label: 'Size (Lowest)',
-    value: 'size-asc',
-  },
-];
-
-export const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
-```
-
-</details>
-
-<details>
-<summary><code>lib/utils.ts</code></summary>
-
-```typescript
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-export const parseStringify = (value: unknown) =>
-  JSON.parse(JSON.stringify(value));
-
-export const convertFileToUrl = (file: File) => URL.createObjectURL(file);
-
-export const convertFileSize = (sizeInBytes: number, digits?: number) => {
-  if (sizeInBytes < 1024) {
-    return sizeInBytes + ' Bytes'; // Less than 1 KB, show in Bytes
-  } else if (sizeInBytes < 1024 * 1024) {
-    const sizeInKB = sizeInBytes / 1024;
-    return sizeInKB.toFixed(digits || 1) + ' KB'; // Less than 1 MB, show in KB
-  } else if (sizeInBytes < 1024 * 1024 * 1024) {
-    const sizeInMB = sizeInBytes / (1024 * 1024);
-    return sizeInMB.toFixed(digits || 1) + ' MB'; // Less than 1 GB, show in MB
-  } else {
-    const sizeInGB = sizeInBytes / (1024 * 1024 * 1024);
-    return sizeInGB.toFixed(digits || 2) + ' GB'; // 1 GB or more, show in GB
-  }
-};
-
-export const calculateAngle = (sizeInBytes: number) => {
-  const totalSizeInBytes = 2 * 1024 * 1024 * 1024; // 2GB in bytes
-  const percentage = (sizeInBytes / totalSizeInBytes) * 360;
-  return Number(percentage.toFixed(2));
-};
-
-export const calculatePercentage = (sizeInBytes: number) => {
-  const totalSizeInBytes = 2 * 1024 * 1024 * 1024; // 2GB in bytes
-  const percentage = (sizeInBytes / totalSizeInBytes) * 100;
-  return Number(percentage.toFixed(1));
-};
-
-export const getFileType = (fileName: string) => {
-  const extension = fileName.split('.').pop()?.toLowerCase();
-
-  if (!extension) return { type: 'other', extension: '' };
-
-  const documentExtensions = [
-    'pdf',
-    'doc',
-    'docx',
-    'txt',
-    'xls',
-    'xlsx',
-    'csv',
-    'rtf',
-    'ods',
-    'ppt',
-    'odp',
-    'md',
-    'html',
-    'htm',
-    'epub',
-    'pages',
-    'fig',
-    'psd',
-    'ai',
-    'indd',
-    'xd',
-    'sketch',
-    'afdesign',
-    'afphoto',
-    'afphoto',
-  ];
-  const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'webp'];
-  const videoExtensions = ['mp4', 'avi', 'mov', 'mkv', 'webm'];
-  const audioExtensions = ['mp3', 'wav', 'ogg', 'flac'];
-
-  if (documentExtensions.includes(extension))
-    return { type: 'document', extension };
-  if (imageExtensions.includes(extension)) return { type: 'image', extension };
-  if (videoExtensions.includes(extension)) return { type: 'video', extension };
-  if (audioExtensions.includes(extension)) return { type: 'audio', extension };
-
-  return { type: 'other', extension };
-};
-
-export const formatDateTime = (isoString: string | null | undefined) => {
-  if (!isoString) return '—';
-
-  const date = new Date(isoString);
-
-  // Get hours and adjust for 12-hour format
-  let hours = date.getHours();
-  const minutes = date.getMinutes();
-  const period = hours >= 12 ? 'pm' : 'am';
-
-  // Convert hours to 12-hour format
-  hours = hours % 12 || 12;
-
-  // Format the time and date parts
-  const time = `${hours}:${minutes.toString().padStart(2, '0')}${period}`;
-  const day = date.getDate();
-  const monthNames = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-  const month = monthNames[date.getMonth()];
-
-  return `${time}, ${day} ${month}`;
-};
-
-export const getFileIcon = (
-  extension: string | undefined,
-  type: FileType | string,
-) => {
-  switch (extension) {
-    // Document
-    case 'pdf':
-      return '/assets/icons/file-pdf.svg';
-    case 'doc':
-      return '/assets/icons/file-doc.svg';
-    case 'docx':
-      return '/assets/icons/file-docx.svg';
-    case 'csv':
-      return '/assets/icons/file-csv.svg';
-    case 'txt':
-      return '/assets/icons/file-txt.svg';
-    case 'xls':
-    case 'xlsx':
-      return '/assets/icons/file-document.svg';
-    // Image
-    case 'svg':
-      return '/assets/icons/file-image.svg';
-    // Video
-    case 'mkv':
-    case 'mov':
-    case 'avi':
-    case 'wmv':
-    case 'mp4':
-    case 'flv':
-    case 'webm':
-    case 'm4v':
-    case '3gp':
-      return '/assets/icons/file-video.svg';
-    // Audio
-    case 'mp3':
-    case 'mpeg':
-    case 'wav':
-    case 'aac':
-    case 'flac':
-    case 'ogg':
-    case 'wma':
-    case 'm4a':
-    case 'aiff':
-    case 'alac':
-      return '/assets/icons/file-audio.svg';
-
-    default:
-      switch (type) {
-        case 'image':
-          return '/assets/icons/file-image.svg';
-        case 'document':
-          return '/assets/icons/file-document.svg';
-        case 'video':
-          return '/assets/icons/file-video.svg';
-        case 'audio':
-          return '/assets/icons/file-audio.svg';
-        default:
-          return '/assets/icons/file-other.svg';
-      }
-  }
-};
-
-// APPWRITE URL UTILS
-// Construct appwrite file URL - https://appwrite.io/docs/apis/rest#images
-export const constructFileUrl = (bucketFileId: string) => {
-  return `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}/storage/buckets/${process.env.NEXT_PUBLIC_APPWRITE_BUCKET}/files/${bucketFileId}/view?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT}`;
-};
-
-export const constructDownloadUrl = (bucketFileId: string) => {
-  return `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}/storage/buckets/${process.env.NEXT_PUBLIC_APPWRITE_BUCKET}/files/${bucketFileId}/download?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT}`;
-};
-
-// DASHBOARD UTILS
-export const getUsageSummary = (totalSpace: any) => {
-  return [
-    {
-      title: 'Documents',
-      size: totalSpace.document.size,
-      latestDate: totalSpace.document.latestDate,
-      icon: '/assets/icons/file-document-light.svg',
-      url: '/documents',
-    },
-    {
-      title: 'Images',
-      size: totalSpace.image.size,
-      latestDate: totalSpace.image.latestDate,
-      icon: '/assets/icons/file-image-light.svg',
-      url: '/images',
-    },
-    {
-      title: 'Media',
-      size: totalSpace.video.size + totalSpace.audio.size,
-      latestDate:
-        totalSpace.video.latestDate > totalSpace.audio.latestDate
-          ? totalSpace.video.latestDate
-          : totalSpace.audio.latestDate,
-      icon: '/assets/icons/file-video-light.svg',
-      url: '/media',
-    },
-    {
-      title: 'Others',
-      size: totalSpace.other.size,
-      latestDate: totalSpace.other.latestDate,
-      icon: '/assets/icons/file-other-light.svg',
-      url: '/others',
-    },
-  ];
-};
-
-export const getFileTypesParams = (type: string) => {
-  switch (type) {
-    case 'documents':
-      return ['document'];
-    case 'images':
-      return ['image'];
-    case 'media':
-      return ['video', 'audio'];
-    case 'others':
-      return ['other'];
-    default:
-      return ['document'];
-  }
-};
-```
-
-</details>
-
-<details>
-<summary><code>index.d.ts</code></summary>
-
-```ts
-/* eslint-disable no-unused-vars */
-
-declare type FileType = 'document' | 'image' | 'video' | 'audio' | 'other';
-
-declare interface ActionType {
-  label: string;
-  icon: string;
-  value: string;
-}
-
-declare interface SearchParamProps {
-  params?: Promise<SegmentParams>;
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
-declare interface UploadFileProps {
-  file: File;
-  ownerId: string;
-  accountId: string;
-  path: string;
-}
-declare interface GetFilesProps {
-  types: FileType[];
-  searchText?: string;
-  sort?: string;
-  limit?: number;
-}
-declare interface RenameFileProps {
-  fileId: string;
-  name: string;
-  extension: string;
-  path: string;
-}
-declare interface UpdateFileUsersProps {
-  fileId: string;
-  emails: string[];
-  path: string;
-}
-declare interface DeleteFileProps {
-  fileId: string;
-  bucketFileId: string;
-  path: string;
-}
-
-declare interface FileUploaderProps {
-  ownerId: string;
-  accountId: string;
-  className?: string;
-}
-
-declare interface MobileNavigationProps {
-  ownerId: string;
-  accountId: string;
-  fullName: string;
-  avatar: string;
-  email: string;
-}
-declare interface SidebarProps {
-  fullName: string;
-  avatar: string;
-  email: string;
-}
-
-declare interface ThumbnailProps {
-  type: string;
-  extension: string;
-  url: string;
-  className?: string;
-  imageClassName?: string;
-}
-
-declare interface ShareInputProps {
-  file: Models.Document;
-  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onRemove: (email: string) => void;
-}
-```
-
-</details>
-
-## <a name="links">🔗 Assets</a>
-
-- Assets used in the project can be found [here](https://drive.google.com/file/d/1NCQH7HNXjfZMQ1MzpX3uRCixSY32iWl2/view?usp=sharing)
-- [Watch Next.js 15 Crash Course ](https://www.youtube.com/watch?v=Zq5fmkH0T78)
-
-## <a name="more">🚀 More</a>
-
-**Advance your skills with Next.js Pro Course**
-
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with
-detailed explanations, cool features, and exercises to boost your skills. Give it a go!
-
-<a href="https://jsmastery.pro/next15" target="_blank">
-   <img src="https://github.com/user-attachments/assets/b8760e69-1f81-4a71-9108-ceeb1de36741" alt="Project Banner">
-</a>
-
-#
-=======
 # StoreIt
-A web application designed for secure file storage, sharing, and management. Features include file uploads, organized folders, easy access controls, and seamless user experience.
->>>>>>> 129aa55c3020d56bb32627ceac624d66ec55543b
+
+StoreIt is a cloud file storage and sharing web app, similar in spirit to
+Google Drive. Users sign in with a one-time code sent to their email, upload
+files, browse them by type, and share individual files with other users by
+email address. Files are stored in Appwrite and are only reachable through the
+app's own authenticated endpoints.
+
+> **Origin.** The project started from the JavaScript Mastery
+> "Storage Management Solution" tutorial
+> ([JavaScript-Mastery-Pro/storage_management_solution](https://github.com/JavaScript-Mastery-Pro/storage_management_solution)).
+> It has since been audited and reworked: access control, private file
+> delivery, upload progress, validation, dependency security updates,
+> automated tests and a reproducible backend setup. See
+> [What changed](#what-changed-from-the-tutorial-version).
+
+## Features
+
+- **Passwordless sign-in.** Sign up or sign in with a 6-digit email OTP
+  (Appwrite email tokens). Wrong or expired codes show a clear error; resend
+  has a cooldown.
+- **Uploads with real progress.** Drag and drop or pick files. Each upload
+  shows a progress bar driven by actual upload events and can be cancelled.
+  Files are limited to 50 MB, checked in the browser and enforced again on the
+  server.
+- **Browse and organise.** Dashboard with storage usage by category and
+  recent files; pages for Documents, Images, Media and Others with search and
+  sorting (date, name, size); rename and delete.
+- **Sharing.** Owners share a file with one or more email addresses and can
+  revoke access. Recipients see shared files in their lists and can view or
+  download them, but cannot rename, re-share or delete them.
+- **Private file delivery.** The storage bucket is private. Files are
+  streamed through `/api/files/[id]`, which checks the session and the
+  owner/recipient list on every request.
+- **Responsive UI** for desktop and mobile.
+
+## Tech stack
+
+- **Next.js 15** (App Router, server actions, route handlers) with **React 19**
+  and **TypeScript**
+- **Appwrite Cloud**: Auth (email OTP), Databases, Storage, via the
+  `node-appwrite` server SDK
+- **Tailwind CSS**, **shadcn/ui** (Radix UI), **React Hook Form** + **Zod**,
+  **Recharts**, **react-dropzone**
+- **Vitest** (unit tests) and **Playwright** (end-to-end tests)
+
+## Architecture
+
+```
+Browser ──► Next.js (App Router)
+             ├─ Server components / server actions   lib/actions/*.ts
+             │    sign-in, files list, rename, share, delete
+             ├─ POST /api/files          upload (multipart, XHR progress)
+             └─ GET  /api/files/[id]     view / ?download=1
+                        │
+                        ▼  node-appwrite with a server-side API key
+                   Appwrite: Auth · Database (users, files) · Storage bucket
+```
+
+- All Appwrite access happens on the server through the TablesDB and Storage
+  APIs. The API key (`NEXT_APPWRITE_KEY`) is never sent to the browser, and
+  the tables and the bucket grant no client permissions.
+- The session is an httpOnly, `SameSite=Strict` cookie holding the Appwrite
+  session secret. `getCurrentUser()` validates it with Appwrite on every
+  request.
+- Access rules live in `lib/file-access.ts`: owners can do everything; users
+  listed in a file's `users` array (by email) can read it. Every server action
+  and route handler loads the file document on the server and checks these
+  rules. IDs, names and extensions sent by the client are not trusted.
+- `/api/files/[id]` renders only passive types inline (images, PDF, audio,
+  video, plain text). Everything else (HTML, SVG, scripts, unknown types) is
+  forced to download. Responses carry `nosniff` and a `sandbox` CSP, so
+  uploaded content cannot run script in the app's origin.
+
+Data model (created by `npm run setup:appwrite`):
+
+| Table | Columns |
+| --- | --- |
+| `users` | `fullName`, `email`, `avatar`, `accountId` (Appwrite user id) |
+| `files` | `name`, `type`, `extension`, `size`, `url`, `bucketFileId`, `accountId`, `owner` → users (many-to-one), `users` (emails shared with) |
+
+## Getting started
+
+### Prerequisites
+
+- **Node.js 20.9 or newer.** Tested on Node 24 LTS (see `.nvmrc`) and
+  Node 26. Older `node-appwrite` releases (up to v22) fail on recent Node
+  versions with `fetch failed`; this project uses v28, which works.
+- An [Appwrite Cloud](https://cloud.appwrite.io) project (the free plan is
+  enough).
+
+### 1. Install
+
+```bash
+nvm use            # Node 24
+npm ci
+```
+
+If your shell exports `NODE_ENV=production`, unset it for development
+(`unset NODE_ENV`). Otherwise npm skips dev dependencies and `next dev`
+misbehaves.
+
+### 2. Configure Appwrite
+
+1. Create a project in Appwrite Cloud. From **Settings**, copy the **API
+   Endpoint** and **Project ID**.
+2. Create an API key (**Overview → API Keys**) with these scopes:
+   - Auth: `users.read`, `users.write`, `sessions.write`
+   - Database: all scopes
+   - Storage: all scopes
+3. Copy `.env.example` to `.env.local` and fill in the endpoint, project ID
+   and API key.
+4. Create the database, collections, indexes and private bucket:
+
+   ```bash
+   npm run setup:appwrite
+   ```
+
+   The script is idempotent and writes the resource IDs into `.env.local`.
+
+Email OTP sign-in must be enabled under **Auth → Settings** (it is on by
+default).
+
+### 3. Run
+
+```bash
+npm run dev                  # http://localhost:3000
+# or a production build
+npm run build && npm start
+```
+
+## Testing
+
+```bash
+npm test                     # unit tests (Vitest)
+npm run typecheck            # TypeScript
+npm run lint                 # ESLint
+npm run build                # production build (fails on type/lint errors)
+
+npm run build
+npm run test:e2e             # public/security browser tests (Playwright)
+E2E_LIVE=1 npm run test:e2e  # + full workflow against your Appwrite project
+```
+
+- Playwright uses its bundled Chromium (`npx playwright install chromium`), or
+  your installed Chrome with `E2E_CHANNEL=chrome`.
+- The live workflow creates throwaway `@example.com` users through the
+  admin API, then covers: OTP sign-in (wrong and correct code), upload,
+  server-side size and empty-file limits, view and download headers, access
+  denied for other users and anonymous requests, forced download of HTML,
+  sharing (including invalid emails), recipient permissions, search, sort,
+  rename (including path-like names), revoking a share, delete and sign-out.
+  `workflow-extra.spec.ts` adds: a code cannot be reused, empty and oversized
+  files are rejected in the browser without an upload request, directory
+  components are stripped from uploaded names, sharing with a second person
+  keeps the first (and removing one keeps the other), dashboard usage, and
+  mobile navigation without horizontal overflow.
+  The suites delete their users and files afterwards. The sign-in step makes
+  Appwrite send one OTP email to the test `@example.com` address.
+
+## What changed from the tutorial version
+
+Security:
+
+- Rename, share and delete server actions now require a signed-in owner. Before,
+  any caller could modify or delete any file by ID.
+- The upload derives the owner from the session instead of trusting
+  client-supplied IDs, and validates name and size on the server.
+- Files are served through an authenticated route from a private bucket.
+  Before, they used public Appwrite URLs, so anyone with a link could read
+  any file.
+- Uploaded HTML/SVG are no longer rendered inline from the app's origin.
+- Upgraded Next.js 15.0.2 → 15.5.27 and React 19 RC → 19.0.8 to fix
+  published advisories, including the React Server Components RCE.
+- Removed `"use server"` from the Appwrite client module, so the admin
+  client factory is no longer exposed as a server action.
+- Stopped logging OTP codes and account IDs in the browser console.
+- Added security headers. Session cookies are `Secure` in production.
+
+Bugs:
+
+- Sharing replaced the existing recipient list, and removing one recipient
+  could wipe it. It now adds and removes correctly.
+- Upload failures were silent and the "progress" was a looping GIF. Uploads
+  now show real progress, errors, cancel and a refresh on completion.
+- Sign-in for an unknown email did nothing; the error now says so. OTP
+  errors and resend are surfaced.
+- Opening a file's action menu also opened the file in a new tab.
+- Storage usage counted only the first 25 files. Type pages always showed
+  "Total: 0 MB".
+- Unknown routes like `/foo` showed Documents; they now 404. Sorting dropped
+  the search query.
+- Type and lint errors were hidden by `ignoreBuildErrors`. They are fixed,
+  and the build now enforces them.
+- `convertFileSize(size, 0)` ignored the requested 0 decimals ("2.0 GB").
+
+## Known limitations
+
+- Video and audio are served as complete files without HTTP range requests.
+  Playback works, but seeking in large videos downloads the whole file first.
+- Files pass through the Next.js server and are buffered in memory (up to
+  50 MB per upload or download). This suits a demo or small deployment, not
+  heavy traffic.
+- Sharing is by email address. A recipient sees the file once they have a
+  StoreIt account with that email. There are no public share links.
+- The 2 GB quota on the dashboard is a display figure; it is not enforced.
+- Sign-in reveals whether an email has an account (a deliberate UX choice).
+  Brute-force protection for OTP codes relies on Appwrite's rate limits.
+- `next lint` is deprecated in Next.js 15.5 and will need migrating to the
+  ESLint CLI before upgrading to Next.js 16.
+- `npm audit` still reports the PostCSS copy bundled inside Next.js 15.5
+  (it only processes this project's own CSS at build time; the fix requires
+  Next.js 16) and advisories in dev/test tooling (Vitest, ESLint
+  dependencies) that need breaking major upgrades. None ship to the browser.
+
+## License
+
+No license has been chosen yet, so all rights are reserved by default. The
+code derives from the JavaScript Mastery tutorial repository, which does not
+publish an explicit license either. Check its terms before choosing an
+open-source license for this project.

@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { STORAGE_LIMIT } from "@/constants";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -14,26 +15,29 @@ export const convertFileSize = (sizeInBytes: number, digits?: number) => {
     return sizeInBytes + " Bytes"; // Less than 1 KB, show in Bytes
   } else if (sizeInBytes < 1024 * 1024) {
     const sizeInKB = sizeInBytes / 1024;
-    return sizeInKB.toFixed(digits || 1) + " KB"; // Less than 1 MB, show in KB
+    return sizeInKB.toFixed(digits ?? 1) + " KB"; // Less than 1 MB, show in KB
   } else if (sizeInBytes < 1024 * 1024 * 1024) {
     const sizeInMB = sizeInBytes / (1024 * 1024);
-    return sizeInMB.toFixed(digits || 1) + " MB"; // Less than 1 GB, show in MB
+    return sizeInMB.toFixed(digits ?? 1) + " MB"; // Less than 1 GB, show in MB
   } else {
     const sizeInGB = sizeInBytes / (1024 * 1024 * 1024);
-    return sizeInGB.toFixed(digits || 1) + " GB"; // 1 GB or more, show in GB
+    return sizeInGB.toFixed(digits ?? 1) + " GB"; // 1 GB or more, show in GB
   }
 };
 
 export const calculatePercentage = (sizeInBytes: number) => {
-  const totalSizeInBytes = 2 * 1024 * 1024 * 1024; // 2GB in bytes
-  const percentage = (sizeInBytes / totalSizeInBytes) * 100;
-  return Number(percentage.toFixed(2));
+  const percentage = (sizeInBytes / STORAGE_LIMIT) * 100;
+  return Number(Math.min(percentage, 100).toFixed(2));
 };
 
 export const getFileType = (fileName: string) => {
-  const extension = fileName.split(".").pop()?.toLowerCase();
+  const dot = fileName.lastIndexOf(".");
+  const extension =
+    dot > 0 && dot < fileName.length - 1
+      ? fileName.slice(dot + 1).toLowerCase()
+      : "";
 
-  if (!extension) return { type: "other", extension: "" };
+  if (!extension) return { type: "other" as FileType, extension: "" };
 
   const documentExtensions = [
     "pdf",
@@ -60,19 +64,18 @@ export const getFileType = (fileName: string) => {
     "sketch",
     "afdesign",
     "afphoto",
-    "afphoto",
   ];
   const imageExtensions = ["jpg", "jpeg", "png", "gif", "bmp", "svg", "webp"];
   const videoExtensions = ["mp4", "avi", "mov", "mkv", "webm"];
   const audioExtensions = ["mp3", "wav", "ogg", "flac"];
 
-  if (documentExtensions.includes(extension))
-    return { type: "document", extension };
-  if (imageExtensions.includes(extension)) return { type: "image", extension };
-  if (videoExtensions.includes(extension)) return { type: "video", extension };
-  if (audioExtensions.includes(extension)) return { type: "audio", extension };
+  let type: FileType = "other";
+  if (documentExtensions.includes(extension)) type = "document";
+  else if (imageExtensions.includes(extension)) type = "image";
+  else if (videoExtensions.includes(extension)) type = "video";
+  else if (audioExtensions.includes(extension)) type = "audio";
 
-  return { type: "other", extension };
+  return { type, extension };
 };
 
 export const formatDateTime = (isoString: string | null | undefined) => {
@@ -173,17 +176,21 @@ export const getFileIcon = (
 };
 
 // APPWRITE URL UTILS
-// Construct appwrite file URL - https://appwrite.io/docs/apis/rest#images
+// Direct Appwrite URL for a stored file. It is saved on the file document for
+// reference only: the bucket is private, so browsers load files through the
+// authenticated /api/files/[id] route instead (see lib/file-response.ts).
 export const constructFileUrl = (bucketFileId: string) => {
   return `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}/storage/buckets/${process.env.NEXT_PUBLIC_APPWRITE_BUCKET}/files/${bucketFileId}/view?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT}`;
 };
 
-export const constructDownloadUrl = (bucketFileId: string) => {
-  return `${process.env.NEXT_PUBLIC_APPWRITE_ENDPOINT}/storage/buckets/${process.env.NEXT_PUBLIC_APPWRITE_BUCKET}/files/${bucketFileId}/download?project=${process.env.NEXT_PUBLIC_APPWRITE_PROJECT}`;
+// DASHBOARD UTILS
+type SpaceBucket = { size: number; latestDate: string };
+export type TotalSpace = Record<FileType, SpaceBucket> & {
+  used: number;
+  all: number;
 };
 
-// DASHBOARD UTILS
-export const getUsageSummary = (totalSpace: any) => {
+export const getUsageSummary = (totalSpace: TotalSpace) => {
   return [
     {
       title: "Documents",
@@ -219,7 +226,8 @@ export const getUsageSummary = (totalSpace: any) => {
   ];
 };
 
-export const getFileTypesParams = (type: string) => {
+/** Maps a route segment (/documents, /media, ...) to file types, or null. */
+export const getFileTypesParams = (type: string): FileType[] | null => {
   switch (type) {
     case "documents":
       return ["document"];
@@ -230,6 +238,21 @@ export const getFileTypesParams = (type: string) => {
     case "others":
       return ["other"];
     default:
-      return ["document"];
+      return null;
   }
+};
+
+/** Route segment that lists files of the given type. */
+export const getTypeRoute = (type: string) => {
+  if (type === "video" || type === "audio") return "/media";
+  if (type === "document" || type === "image" || type === "other")
+    return `/${type}s`;
+  return "/others";
+};
+
+export const getOwnerName = (owner: unknown): string => {
+  if (owner && typeof owner === "object" && "fullName" in owner) {
+    return String((owner as { fullName: unknown }).fullName ?? "");
+  }
+  return "";
 };
