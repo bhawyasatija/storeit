@@ -215,7 +215,9 @@ Bugs:
 
 ## License
 
-No license has been chosen yet, so all rights are reserved by default. The
-code derives from the JavaScript Mastery tutorial repository, which does not
-publish an explicit license either. Check its terms before choosing an
-open-source license for this project.
+No license has been chosen, so all rights are reserved by default. The project
+began as a reworked copy of the JavaScript Mastery tutorial listed under
+*Origin*. At the time of writing that upstream repository could not be reached
+(HTTP 404) and no explicit license for it could be confirmed, so the licensing
+of the inherited code is unverified. Confirm the upstream terms before choosing
+an open-source license for this project.
